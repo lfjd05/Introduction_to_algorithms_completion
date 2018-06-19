@@ -18,4 +18,4 @@ def counting_sort(A, B, k):
 A = [2, 5, 3, 0, 2, 3, 0, 3]
 B = [0]*8
 counting_sort(A, B, 5)
-print(B)
+print('显示排序', B)

@@ -2,6 +2,7 @@
 import time
 
 
+# 插入排序
 def insertion_sort(d):
     # 已经有一张在左手索引从1开始
     for j in range(1, len(d)):
