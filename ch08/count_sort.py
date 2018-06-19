@@ -3,6 +3,7 @@
 """
 
 
+# 计数
 def counting_sort(A, B, k):
     C = [0] * (k+1)
     for j in range(len(A)):
