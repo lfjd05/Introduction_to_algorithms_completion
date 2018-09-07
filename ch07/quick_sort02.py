@@ -4,6 +4,7 @@
 from random import randrange
 
 
+# 根据主元把A分块
 def partition(A, p, r):
     x = A[r]  # 主元
     i = p-1  # 记录分界线的位置
@@ -12,12 +13,12 @@ def partition(A, p, r):
             i += 1
             A[i], A[j] = A[j], A[i]  # 找到比主元小的，交换到左边
     A[i + 1], A[r] = A[r], A[i + 1]  # 把主元放到分界处
-    return i+1
+    return i+1     # 返回分界线位置，给下次递归用
 
 
 def randomize_partition(A, p, r):
-    i = randrange(p, r+1, 1)
-    A[r], A[i] = A[i], A[r]   # 首先 A【r】和元素随机交换，这样主元会不同
+    i = randrange(p, r+1, 1)  # 产生随机主元的位置
+    A[r], A[i] = A[i], A[r]   # 主元放最后省得捣乱
     return partition(A, p, r)
 
 
