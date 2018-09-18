@@ -9,4 +9,18 @@ class Solution:
         :type s: str
         :rtype: str
         """
-        r = [s[i:i + x + 1] for x in range(len(s)) for i in range(len(s) - x)]
+        # 行数比较少的版本
+        if len(s) != 0:
+            r = [s[i:i + x + 1] for x in range(len(s)) for i in range(len(s) - x)
+                 if s[i:i + x + 1] == s[i:i + x + 1][::-1]]
+            # print(r)
+            return r[-1]
+        else:
+            return s
+        # for x in range(len(s)):
+        #     for i in range(len(s)-x):
+        #         a = s[i:i + x + 1]
+        #         print(a, a[::-1])
+
+# Solution().longestPalindrome('babad')
+# Solution().longestPalindrome('cbbd')

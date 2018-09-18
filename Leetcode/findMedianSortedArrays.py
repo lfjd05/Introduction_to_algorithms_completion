@@ -12,10 +12,10 @@ class Solution:
         :type nums2: List[int]
         :rtype: float
         """
-        nums = sorted(nums1 + nums2)
+        nums = sorted(nums1 + nums2)    # 排序很关键
         middle = len(nums)//2
         # print(nums)
-        if len(nums)%2 == 0:
+        if len(nums)%2 == 0:            # 如果是奇数个
             # print((nums[middle-1]+nums[middle])/2)
             return (nums[middle-1]+nums[middle])/2
         else:
