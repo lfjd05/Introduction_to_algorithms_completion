@@ -28,4 +28,4 @@ class Solution:
         # 边往字典增加键/值对，边与nums[x]进行对比
 
 
-# Solution().twoSum([3, 3], 6)
+Solution().twoSum([3, 3], 6)
