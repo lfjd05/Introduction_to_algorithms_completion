@@ -18,6 +18,7 @@ p 可能为空，且只包含从 a-z 的小写字母，以及字符 . 和 *。
    如果第二个字符不是*判断第一个字符是否相等，从第二个字符开始递归
    如果第二个字符是*且匹配，调用递归匹配s和去掉前两个字符的p
 """
+import re
 
 
 class Solution:
@@ -27,4 +28,10 @@ class Solution:
         :type p: str
         :rtype: bool
         """
+        return re.match('^'+p+'$', s) is not None
+
+
+# print(Solution().isMatch('aa', 'a'))   # false
+
+
 
