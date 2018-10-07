@@ -17,15 +17,22 @@ class Solution:
 
         result = []
         for i in range(len(nums)):
-            left = 0
+            # 相邻的数相等不需要再计算几次，因为结果肯定一样
+            if i > 0 and nums[i] == nums[i-1]:
+                continue
+            left = i + 1   # 从i到最后一个元素开始夹逼
             right = len(nums)-1
             while left < right:
                 sum0 = nums[i] + nums[left]+nums[right]
-                if 0 == sum0 and \
-                        (sorted([nums[i], nums[left], nums[right]]) not in result)\
-                        and(i!=left)and(i!=right):
-                    result.append(sorted([nums[i], nums[left], nums[right]]))
+                if 0 == sum0:
+                    result.append([nums[i], nums[left], nums[right]])
+                    # 相邻元素相等就不再用
+                    while left < right and nums[left] == nums[left+1]:
+                        left += 1
+                    while left < right and nums[right] == nums[right-1]:
+                        right -= 1
                     left += 1
+                    right -= 1
                 elif 0 > sum0:  # 太小了，左侧逼近
                     left += 1
                 else:
