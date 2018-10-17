@@ -33,3 +33,7 @@ class Solution:
         if len(stack) != 0:
             return False
         return True
+
+
+# "{[]}"
+print(Solution().isValid("{[]}"))
