@@ -39,9 +39,21 @@ class Solution:
         result = []
         while len(list1) > 0 and len(list2) > 0:
             if list1[0].val < list2[0].val:
-                result.append(list1.pop(0))
+                a = list1.pop(0)
+                a.next = None
+                if len(result)==1:
+                    result.append(a)
+                else:   # 尾部添加
+                    result[-1] = a
+                    result.append(a)
             else:
-                result.append(list2.pop(0))
+                a = list2.pop(0)
+                a.next = None    # 断掉原来的指针
+                if len(result)==1:
+                    result.append(a)
+                else:   # 尾部添加
+                    result[-1] = a
+                    result.append(a)
         result += list1
         result += list2
-        return result
+        return result[0]
