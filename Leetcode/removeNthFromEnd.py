@@ -36,4 +36,4 @@ class Solution:
         return list0[0]
 
 
-# print(Solution().removeNthFromEnd([1,2,3,4,5],2))
+print(Solution().removeNthFromEnd([1,2,3,4,5],2))
