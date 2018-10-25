@@ -24,14 +24,21 @@ class Solution:
         return self.res
 
     def generateParenthesisIter(self, mstr, r, l):
+        """
+
+        :param mstr:
+        :param r:   右侧括号数量
+        :param l:   左侧括号数量
+        :return:
+        """
         if r == 0 and l == 0:
             # 左右都不剩余说明排完了
             self.res.append(mstr)
         # 如果左括号还有剩余，则可以放置左括号，如果右括号的剩余数大于左括号，则可以放置右括号
         if l > 0:
             self.generateParenthesisIter(mstr+'(', r, l-1)
-        if r > 0:
+        if r > 0 and r > l:   # 假如剩余的右括号还比较多
             self.generateParenthesisIter(mstr+')', r-1, l)
 
 
-print(Solution().generateParenthesis(3))
+# print(Solution().generateParenthesis(3))
