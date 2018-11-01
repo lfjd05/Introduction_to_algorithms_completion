@@ -12,4 +12,5 @@ A simple completion to the magic book of  Introduction_to_algorithms. 算法导�
 
 代码 input&output.py是面试过程中常见的输入输出子函数
 
-日志：2018.6.19 第一次上传，目前完成到第七章
+日志：2018.6.19 第一次上传，目前完成到第七章<br>
+      2018.11.1 leetcode上面一些题目的解法
