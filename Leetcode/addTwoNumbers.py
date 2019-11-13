@@ -13,31 +13,6 @@ class ListNode:
         self.next = None
 
 
-class LinkList:
-    def __init__(self):
-        """
-            链表变量初始化
-        """
-        self.length = 0
-        self.head = None
-
-    def is_empty(self):
-        # 判断是否空
-        return self.length == 0
-
-    def append(self, insert_node):
-        if isinstance(insert_node, ListNode):   # 判断是否节点类型
-            pass
-        if self.is_empty():
-            self.head = insert_node
-        else:
-            node = self.head    # 临时节点先放起点
-            while node.next:   # 如果还没到尾部
-                node = node.next
-            node.next = insert_node
-        self.length += 1
-
-
 class Solution:
     def addTwoNumbers(self, l1, l2):
         """
@@ -46,36 +21,26 @@ class Solution:
         :type l2: ListNode
         :rtype: ListNode
         """
-        tmp = ListNode(0)
-        res = tmp
-        flag = 0
+        carry = 0
+        head = node = ListNode('#')     # 输出的链表
         while l1 or l2:
-            tmpsum = 0
-            if l1:
-                tmpsum = l1.val
-                l1 = l1.next
-            if l2:
-                tmpsum += l2.val    # 节点求和
-                l2 = l2.next
-            tmpres = ((tmpsum + flag) % 10)   # 带进位的求和，过滤掉大于9的部分
-            flag = ((tmpsum + flag) // 10)
-            res.next = ListNode(tmpres)
-            res = res.next
-        if flag:
-            res.next = ListNode(1)
-        res = tmp.next
-        del tmp
-        print(res.val)
-        return res
+            val1 = l1.val if l1 else 0
+            val2 = l2.val if l2 else 0
+            carry, rem = divmod(carry+val1+val2, 10)
+            # 连接输出数组的节点
+            node.next = ListNode(rem)
+            node = node.next
+            l1 = l1.next if l1 else None
+            l2 = l2.next if l2 else None
+        # 如果还有进位，加在下一个节点
+        if carry:
+            node.next = ListNode(carry)
+        return head.next
 
+if __name__ == '__main__':
+    a, a.next, a.next.next = ListNode(2), ListNode(4), ListNode(3)
+    b, b.next, b.next.next = ListNode(5), ListNode(6), ListNode(9)
+    result = Solution().addTwoNumbers(a, b)
 
-# l1_data = [2, 4, 3]
-# l2_data = [5, 6, 4]
-#
-# L1 = LinkList()
-# for i in l1_data:
-#     L1.append(i)
-# data = [(2, 5), (4, 6), (3, 4)]
-# a = Solution()
-for i, j in data:
-    a.addTwoNumbers(ListNode(i), ListNode(j))
+    # 1307
+    print(result.val, result.next.val, result.next.next.val, result.next.next.next.val)
